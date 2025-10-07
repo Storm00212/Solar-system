@@ -1,0 +1,123 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Immersive Realistic Solar System — Canvas N-Body</title>
+  <meta name="description" content="A visually rich, immersive solar system simulation. Not to scale visually — distances and sizes are artistically adjusted for long-lasting viewer experience.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!--
+    Immersive Solar System
+    - Three-file project: index.html, styles.css, scripts.js
+    - This file provides the HTML scaffolding and UI hooks.
+    - Visual fidelity and long session engagement prioritized.
+  -->
+
+  <div id="app">
+    <header id="topbar" role="banner" aria-label="Solar system visual controls">
+      <div class="logo">
+        <svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true">
+          <defs>
+            <radialGradient id="g1" cx="30%" cy="30%">
+              <stop offset="0%" stop-color="#ffd86b"/>
+              <stop offset="100%" stop-color="#ff8c3a"/>
+            </radialGradient>
+          </defs>
+          <circle cx="24" cy="24" r="10" fill="url(#g1)"/>
+        </svg>
+        <h1>Immersive Solar System</h1>
+      </div>
+
+```
+  <nav class="controls" aria-label="controls">
+    <div class="control-group">
+      <label for="speedRange">Time speed</label>
+      <input id="speedRange" type="range" min="0.01" max="50" step="0.01" value="0.65" />
+      <output id="speedValue">0.65</output>
+    </div>
+
+    <div class="control-group">
+      <label for="scaleRange">Scale (visual)</label>
+      <input id="scaleRange" type="range" min="20" max="2000" step="1" value="160" />
+      <output id="scaleValue">160</output>
+    </div>
+
+    <div class="control-group compact">
+      <button id="playPause" class="btn primary" aria-pressed="true">Pause</button>
+      <button id="resetBtn" class="btn ghost">Reset</button>
+    </div>
+  </nav>
+</header>
+
+<main id="main" role="main">
+  <section class="view-wrap">
+    <!-- Primary canvas for rendering -->
+    <canvas id="stage" tabindex="0" aria-label="Solar system render"></canvas>
+
+    <!-- UI overlay for information and small interactive controls -->
+    <aside id="hud" aria-hidden="false">
+      <div class="panel top">
+        <div class="stat">Time: <span id="timeDisplay">Day 0.00</span></div>
+        <div class="stat">Scale: <span id="scaleDisplay">160 px/AU</span></div>
+        <div class="stat">Energy: <span id="energyDisplay">—</span></div>
+      </div>
+
+      <div class="panel mid">
+        <h3>Focus</h3>
+        <div id="focusList" class="focus-list" role="list">
+          <!-- dynamically populated buttons for focusing objects -->
+        </div>
+      </div>
+
+      <div class="panel bottom">
+        <h4>Tips</h4>
+        <ol class="tips">
+          <li>Use mouse wheel to zoom; drag to pan.</li>
+          <li>Click a planet to center on it. Double-click for info.</li>
+          <li>Adjust Time speed to watch orbits in slow motion or fast-forward.</li>
+        </ol>
+      </div>
+    </aside>
+
+    <!-- Decorative sun glow element (DOM-based for extra softness) -->
+    <div id="sunGlow" aria-hidden="true"></div>
+  </section>
+
+  <section id="legend" aria-hidden="false">
+    <div class="legend-item">
+      <span class="dot sun"></span><span>Sun</span>
+    </div>
+    <div class="legend-item">
+      <span class="dot planet earth"></span><span>Earth</span>
+    </div>
+    <div class="legend-item">
+      <span class="dot ring"></span><span>Saturn-like rings</span>
+    </div>
+  </section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="credits">
+    Built for long-lasting immersive viewing. Distances and sizes are artistically adjusted for clarity and beauty.
+  </div>
+  <div class="attribution">
+    <small>Rendering: CPU canvas — optimized. Interaction: drag, wheel, keyboard arrows (← → ↑ ↓).</small>
+  </div>
+</footer>
+```
+
+  </div>
+
+  <!-- Accessibility and tiny helper elements -->
+
+  <div id="srOnly" class="sr-only" aria-hidden="false">Solar System: Canvas rendering with interactive controls.</div>
+
+  <!-- Main simulation script -->
+
+  <script src="scripts.js"></script>
+
+</body>
+</html>
